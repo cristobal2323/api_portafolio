@@ -15,7 +15,6 @@ const PersonSchema = Schema({
   twitter: String,
   picture: String,
   mail: String,
-  user_id: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 })
 
 module.exports = mongoose.model('Person', PersonSchema)

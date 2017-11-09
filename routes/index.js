@@ -11,7 +11,7 @@ api.get('/person', personCtrl.getPeople)
 api.get('/person/:personId', personCtrl.getPerson)
 api.post('/person', auth,  personCtrl.savePerson)
 api.put('/person/:personId', auth, personCtrl.updatePerson)
-api.delete('/person/:personId', personCtrl.deletePerson)
+api.delete('/person/:personId', auth, personCtrl.deletePerson)
 
 /*Login*/
 api.post('/signup', userCtrl.signUp)
