@@ -9,7 +9,7 @@ const api = express.Router()
 /* Person */
 api.get('/person', personCtrl.getPeople)
 api.get('/person/:personId', personCtrl.getPerson)
-api.post('/person', auth,  personCtrl.savePerson)
+api.post('/person', personCtrl.savePerson)
 api.put('/person/:personId', auth, personCtrl.updatePerson)
 api.delete('/person/:personId', auth, personCtrl.deletePerson)
 
