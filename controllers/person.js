@@ -37,6 +37,7 @@ function savePerson (req, res) {
   person.description = req.body.description
   person.mail = req.body.mail
   person.user_id = req.body.user_id
+  person.phone = req.body.phone
 
   person.save().then((personStored)=>{
     res.status(200).send({ person: personStored })
