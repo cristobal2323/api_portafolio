@@ -14,16 +14,28 @@ function getPerson (req, res) {
 }
 
 function getPeople (req, res) {
-  Person.find({}, (err, people) => {
-    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-    if (!people) return res.status(404).send({message: 'No existen personas'})
+  const query = {};
 
-    res.status(200).send({ people })
-  })
+  if (req.params.name !== 'null') {
+    query.name = { $regex: `.*${req.params.name}.*`, $options:'i' };
+  }
+  if (req.params.lastName !== 'null') {
+    query.last_name = { $regex: `.*${req.params.lastName}.*`, $options:'i' };
+  }
+  if (req.params.mail !== 'null') {
+    query.mail = { $regex: `.*${req.params.mail}.*`, $options:'i' };
+  }
+  const skip = parseInt(req.params.skip, 10);
+  const limit = parseInt(req.params.limit, 10);
+  Person.find(query, (err, people) => {
+    if (err) return res.status(500).send({ message: `Error al realizar la petición: ${err}` });
+    if (!people) return res.status(404).send({ message: 'No existen personas' });
+
+    return res.status(200).send({ people });
+  }).skip(skip).limit(limit);
 }
 
 function savePerson (req, res) {
-  console.log("cuerpo",req.body)
 
   let person = new Person()
   

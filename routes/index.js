@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth')
 const api = express.Router()
 
 /* Person */
-api.get('/person', personCtrl.getPeople)
+api.get('/person/:name/:lastName/:mail/:skip/:limit', personCtrl.getPeople)
 api.get('/person/:personId', personCtrl.getPerson)
 api.post('/person', personCtrl.savePerson)
 api.put('/person/:personId', auth, personCtrl.updatePerson)
