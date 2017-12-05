@@ -10,8 +10,8 @@ const api = express.Router()
 api.get('/person/:name/:lastName/:mail/:skip/:limit', personCtrl.getPeople)
 api.get('/person/:personId', personCtrl.getPerson)
 api.post('/person', personCtrl.savePerson)
-api.put('/person/:personId', auth, personCtrl.updatePerson)
-api.delete('/person/:personId', auth, personCtrl.deletePerson)
+api.put('/person/:personId', personCtrl.updatePerson)
+api.delete('/person/:personId', personCtrl.deletePerson)
 
 /*Login*/
 
