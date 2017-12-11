@@ -9,6 +9,7 @@ const ProjectSchema = Schema({
   description: String,
   text: String,
   picture: String,
+  link: String,
 })
 
 module.exports = mongoose.model('Project', ProjectSchema)

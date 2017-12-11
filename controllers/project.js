@@ -38,6 +38,7 @@ function saveProject (req, res) {
   project.description = req.body.description
   project.text = req.body.text
   project.picture = req.body.picture
+  project.link = req.body.link
 
   project.save().then((projectStored)=>{
     res.status(200).send({ time: projectStored })
